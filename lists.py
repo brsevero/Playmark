@@ -10,14 +10,30 @@ class Node:
             NoAtual  = NoAtual.proximo
         print("Null")
 
-def CriaNo(lista,dado) -> Node:
-    Notemp = Node(dado)
-    Notemp.proximo = lista
-    return Notemp
 
+class Lista:
+    def __init__(self):
+        self.cabeca = None
+    
+    def ta_vazia(self):
+        return self.cabeca == None
+    
+    def ImprimeLista(self) -> None:
+        self.cabeca.imprimir()
 
+    def CriaNo(self,dado) -> Node:
+        Notemp = Node(dado)
+        Notemp.proximo = self.cabeca
+        self.cabeca = Notemp
+        return Notemp
 
+lista = Lista()
+lista.CriaNo(1)
+lista.CriaNo(2)
+lista.CriaNo(3)
+lista.ImprimeLista()
 
+"""
 node1 = Node(7)
 node2 = Node(11)
 node3 = Node(3)
@@ -30,3 +46,4 @@ node3.proximo = node4
 node4.proximo = node5
 
 node1.imprimir()
+"""
