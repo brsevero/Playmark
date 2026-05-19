@@ -11,7 +11,7 @@ class Node:
         print("Null")
 
 
-class Lista:
+class Lista(Node):
     def __init__(self):
         self.cabeca = None
     
