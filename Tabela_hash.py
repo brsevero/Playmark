@@ -1,5 +1,6 @@
 historico = {}  
 
+#Faz o Registro de dos filmes em historico
 def registrar_filme(titulo: str, ano: int, nota: int, data: str) -> None:
     chave = titulo.strip().title()
     historico[chave] = {
@@ -7,7 +8,8 @@ def registrar_filme(titulo: str, ano: int, nota: int, data: str) -> None:
         "nota": nota,
         "data": data,
     }
-
+    
+#Faz oa busca dos filmes em historico
 def buscar_filme(titulo: str) -> dict | None:
     chave = titulo.strip().title()
     if chave in historico:
@@ -21,12 +23,11 @@ def buscar_filme(titulo: str) -> dict | None:
         print(f'\n  ✖ "{chave}" não está no histórico.')
         return None
 
+#mostra a lista de historico
 def listar_historico() -> None:
     if not historico:
         print("  O histórico está vazio.")
         return
-
     print(f"\n  {'TÍTULO':<30} {'ANO':<6} {'NOTA':<6} {'DATA ASSISTIDO'}")
-
     for titulo, dados in historico.items():
         print(f"  {titulo:<30} {dados['ano']:<6} {dados['nota']:<6} {dados['data']}")
