@@ -30,17 +30,3 @@ def listar_historico() -> None:
 
     for titulo, dados in historico.items():
         print(f"  {titulo:<30} {dados['ano']:<6} {dados['nota']:<6} {dados['data']}")
-
-if __name__ == "__main__":
-
-    print("  REGISTRANDO FILMES")
-    registrar_filme("Interestelar",       2014, 10, "2025-01-15")
-    registrar_filme("Parasita",           2019,  9, "2025-02-03")
-    registrar_filme("O Poderoso Chefão",  1972, 10, "2025-03-20")
-    registrar_filme("Clube da Luta",      1999,  8, "2025-04-11")
-    registrar_filme("Matrix",             1999,  9, "2025-05-02")
-
-    print("\n  HISTÓRICO COMPLETO")
-    listar_historico()
-    titulo_digitado = input("\n  Digite o nome do filme que quer buscar: ")
-    buscar_filme(titulo_digitado)
