@@ -57,14 +57,14 @@ if __name__ == "__main__":
         "Interestelar", 
         "Ficção Científica", 
         9.5, 
-        "Excelente abordagem sobre física quântica e viagem no tempo. Visual incrível!"
+        "Possui visual e trilha sonora incrível. Só não dou os 10 por algumas falhas no roteiro que são ilógicas e as suas imprecisões científicas, além do ritmo do filme que não me agradou tanto."
     )
     
     meu_sistema.adicionar_filme(
         "O Auto da Compadecida", 
         "Comédia/Drama", 
         10.0, 
-        "Um clássico do cinema brasileiro. Chicó e João Grilo são eternos."
+        "Um clássico do cinema brasileiro. Chicó e João Grilo são eternos e não é à toa que esta maravilha é o ganhador do Grande Prêmio do Cinema Brasileiro."
     )
 
     meu_sistema.exibir_catalogo()
