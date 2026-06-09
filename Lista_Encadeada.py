@@ -1,69 +1,70 @@
 import sys
 import io
 
-# Força a saída do terminal a aceitar caracteres UTF-8 (acentos)
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-class Filme:
-    """Representa um nó da lista encadeada."""
-    def __init__(self, titulo, genero, ano):
-        self.titulo = titulo
-        self.genero = genero
-        self.ano = ano
-        self.proximo = None  # Aponta para o próximo filme (inicialmente nenhum)
-
-    def __str__(self):
-        return f"Título: {self.titulo} | Gênero: {self.genero} | Ano: {self.ano}"
-
+from filme import Filme
 
 class CatalogoFilmes:
-    """Representa a lista encadeada em si."""
+    
     def __init__(self):
-        self.cabeca = None  # O primeiro filme do catálogo
+        self.cabeca = None  # Início do catálogo
 
-    def adicionar_filme(self, titulo, genero, ano):
-        """Adiciona um novo filme ao final do catálogo."""
-        novo_filme = Filme(titulo, genero, ano)
+    def adicionar_filme(self, titulo, genero, avaliacao, comentarios):
+        """Cria uma instância da entidade Filme e a adiciona ao final da lista."""
+        # Criando o objeto/nó com os novos atributos
+        novo_filme = Filme(titulo, genero, avaliacao, comentarios)
         
-        # Se o catálogo estiver vazio, o novo filme se torna a cabeça
+        # Se a lista estiver vazia
         if self.cabeca is None:
             self.cabeca = novo_filme
-            print(f"Filme '{titulo}' adicionado como o primeiro do catálogo.")
+            print(f"-> '{titulo}' adicionado como o primeiro filme do catálogo.")
             return
         
-        # Caso contrário, percorre a lista até encontrar o último filme
+        # Se já houverem filmes, percorre até o último
         atual = self.cabeca
         while atual.proximo is not None:
             atual = atual.proximo
         
-        # O último filme agora aponta para o novo filme
+        # Conecta o último filme ao novo filme
         atual.proximo = novo_filme
-        print(f"Filme '{titulo}' adicionado ao final do catálogo.")
+        print(f"-> '{titulo}' adicionado ao catálogo.")
 
     def exibir_catalogo(self):
-        """Percorre e exibe todos os filmes do catálogo."""
+        """Percorre a lista encadeada e exibe todos os filmes."""
         if self.cabeca is None:
             print("O catálogo está vazio.")
             return
         
-        print("\n--- CÁTALOGO DE FILMES ---")
+        print("\n==========================================")
+        print("          MEU CATÁLOGO DE FILMES          ")
+        print("==========================================")
+        
         atual = self.cabeca
         posicao = 1
         while atual is not None:
             print(f"{posicao}. {atual}")
+            print("-" * 42)
             atual = atual.proximo
             posicao += 1
-        print("--------------------------\n")
 
-
-# --- Testando a estrutura no seu sistema ---
+# --- Testando a Integração ---
 if __name__ == "__main__":
-    meu_catalogo = CatalogoFilmes()
+    meu_sistema = CatalogoFilmes()
 
-    # Adicionando filmes dinamicamente
-    meu_catalogo.adicionar_filme("Interestelar", "Ficção Científica", 2014)
-    meu_catalogo.adicionar_filme("O Poderoso Chefão", "Drama/Crime", 1972)
-    meu_catalogo.adicionar_filme("Matrix", "Ação/Ficção Científica", 1999)
+    # Adicionando filmes com os novos atributos (Título, Gênero, Avaliação, Comentários)
+    meu_sistema.adicionar_filme(
+        "Interestelar", 
+        "Ficção Científica", 
+        9.5, 
+        "Excelente abordagem sobre física quântica e viagem no tempo. Visual incrível!"
+    )
+    
+    meu_sistema.adicionar_filme(
+        "O Auto da Compadecida", 
+        "Comédia/Drama", 
+        10.0, 
+        "Um clássico do cinema brasileiro. Chicó e João Grilo são eternos."
+    )
 
-    # Exibindo o catálogo completo
-    meu_catalogo.exibir_catalogo()
+    meu_sistema.exibir_catalogo()
