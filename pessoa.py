@@ -18,7 +18,6 @@ class Pessoa:
 
     def __init__(self, id_pessoa, nome, data_nascimento, genero, tipo_pessoa, data_atual="2026-06-10"):
         
-        # --- 1. TRATAMENTO DO GÊNERO ---
         genero_limpo = self._normalizar_texto(genero)
         genero_final = None
         for op in self.OPCOES_GENERO:
@@ -27,8 +26,7 @@ class Pessoa:
                 break
         if genero_final is None:
             raise ValueError(f"Gênero inválido! Escolha: {self.OPCOES_GENERO}")
-
-        # --- 2. TRATAMENTO DO TIPO DE PESSOA ---
+        
         tipo_limpo = self._normalizar_texto(tipo_pessoa)
         tipo_final = None
         for op in self.OPCOES_TIPO:
@@ -38,7 +36,6 @@ class Pessoa:
         if tipo_final is None:
             raise ValueError(f"Tipo inválido! Escolha: {self.OPCOES_TIPO}")
 
-        # --- 3. VALIDAÇÃO DE IDADE ---
         partes_nasc = data_nascimento.split("-")
         partes_hoje = data_atual.split("-")
         
@@ -49,7 +46,6 @@ class Pessoa:
         if idade < 18:
             raise ValueError(f"Cadastro bloqueado: {nome} tem {idade} anos. Mínimo 18.")
             
-        # Atribuição final
         self.id_pessoa = id_pessoa
         self.nome = nome
         self.data_nascimento = data_nascimento
@@ -59,13 +55,11 @@ class Pessoa:
     def __str__(self):
         return f"[{self.id_pessoa}] {self.nome} - {self.tipo_pessoa} | Nasc: {self.data_nascimento} | Gênero: {self.genero}"
 
-# --- Teste da nova flexibilidade ---
 
 if __name__ == "__main__":
-    # Testando variações de "Usuário"
-    p1 = Pessoa(1, "Ana", "1990-01-01", "Feminino", "usuario")        # Sem acento
-    p2 = Pessoa(2, "Beto", "1990-01-01", "Masculino", "U S U A R I O") # Com espaços
-    p3 = Pessoa(3, "Caio", "1990-01-01", "Masculino", "USUÁRIO")      # Maiúsculas com acento
+    p1 = Pessoa(1, "Ana", "1990-01-01", "Feminino", "usuario")        
+    p2 = Pessoa(2, "Beto", "1990-01-01", "Masculino", "U S U A R I O") 
+    p3 = Pessoa(3, "Caio", "1990-01-01", "Masculino", "USUÁRIO")
     
     print(p1)
     print(p2)
