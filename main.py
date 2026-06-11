@@ -1,16 +1,48 @@
-"""
-adult: um booleano que indica se o filme é para adultos
-backdrop_path: o caminho para a imagem de fundo do filme
-genre_ids: um array de inteiros com os ids dos gêneros do filme
-id: o id do filme
-original_language: o idioma original do filme
-original_title: o título original do filme
-overview: a sinopse do filme
-popularity: a popularidade do filme
-poster_path: o caminho para o poster do filme
-release_date: a data de lançamento do filme
-title: o título do filme
-video: um booleano que indica se o filme tem vídeo
-vote_average: a média de votos do filme
-vote_count: o número de votos do filme
-"""
+from pessoa import Pessoa
+from filme import Filme
+from comentario import Comentario
+
+print("===== INICIANDO SISTEMA PLAY MARK =====\n")
+
+user1 = Pessoa(1, "Lucas Medeiros", "2000-05-12", "Masculino", "Usuário")
+user2 = Pessoa(2, "Beatriz Souza", "1998-11-23", "feminino", "u s u a r i o")
+diretor = Pessoa(3, "Christopher Nolan", "1970-07-30", "Masculino", "Diretor")
+
+
+filme = Filme("Interestelar", "Ficção Científica", 8.5)
+print("--- Estado Inicial do Filme ---")
+print(filme)
+
+
+print("--- Atualizando a Avaliação do Filme ---")
+filme.avaliar(9.8)
+print(filme)
+
+# Teste de segurança da avaliação (Evitando notas absurdas)
+try:
+    filme.avaliar(12.5)  # Nota maior que 10
+except ValueError as e:
+    print(f"[Bloqueio de Nota Invalida]: {e}\n")
+
+
+# 4. Criando e inserindo os comentários na lista encadeada
+try:
+    c1 = Comentario(1, user1, "A trilha sonora é de chorar. Obra-prima!")
+    c2 = Comentario(2, user2, "Achei confuso no final, mas a fotografia é linda.")
+    
+    # Inserindo na lista encadeada do filme
+    filme.adicionar_comentario(c1)
+    filme.adicionar_comentario(c2)
+    
+except ValueError as e:
+    print(f"Erro ao criar comentário: {e}")
+
+filme.exibir_comentarios()
+
+
+# 6. Testando a barreira de segurança de perfil (Diretor tentando comentar)
+try:
+    c3 = Comentario(3, diretor, "Obrigado por assistirem ao meu filme!")
+    filme.adicionar_comentario(c3)
+except ValueError as e:
+    print(f"\n[Bloqueio de Segurança Funcional]: {e}")
