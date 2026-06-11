@@ -8,7 +8,7 @@ from filme import Filme
 class CatalogoFilmes:
     
     def __init__(self):
-        self.cabeca = None  # Início do catálogo
+        self.cabeca = None  
 
     def adicionar_filme(self, titulo, genero):
         """Cria uma instância da entidade Filme e a adiciona ao final da lista."""

@@ -55,12 +55,3 @@ class Pessoa:
     def __str__(self):
         return f"[{self.id_pessoa}] {self.nome} - {self.tipo_pessoa} | Nasc: {self.data_nascimento} | Gênero: {self.genero}"
 
-
-"""if __name__ == "__main__":
-    p1 = Pessoa(1, "Ana", "1990-01-01", "Feminino", "usuario")        
-    p2 = Pessoa(2, "Beto", "1990-01-01", "Masculino", "U S U A R I O") 
-    p3 = Pessoa(3, "Caio", "1990-01-01", "Masculino", "USUÁRIO")
-    
-    print(p1)
-    print(p2)
-    print(p3)"""
