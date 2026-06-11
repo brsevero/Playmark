@@ -49,7 +49,7 @@ class CatalogoFilmes:
             posicao += 1
 
 # --- Testando a Integração ---
-if __name__ == "__main__":
+"""if __name__ == "__main__":
     meu_sistema = CatalogoFilmes()
 
     # Adicionando filmes com os novos atributos (Título, Gênero, Avaliação, Comentários)
@@ -67,4 +67,4 @@ if __name__ == "__main__":
         "Um clássico do cinema brasileiro. Chicó e João Grilo são eternos e não é à toa que esta maravilha é o ganhador do Grande Prêmio do Cinema Brasileiro."
     )
 
-    meu_sistema.exibir_catalogo()
+    meu_sistema.exibir_catalogo()"""

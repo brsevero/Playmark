@@ -10,7 +10,7 @@ class Pessoa:
     
     # Método auxiliar para limpar qualquer texto (remove acento, tira espaço, padroniza)
     def _normalizar_texto(self, texto):
-        texto = str(texto).strip().title()
+        texto = str(texto).replace(" ", "").strip().title()
         com_acentos = "ÁÀÃÂÉÈÊÍÏÓÔÕÖÚÇÑáàãâéèêíïóôõöúçñ"
         sem_acentos = "AAAAEEEIIOOOOUCNaaaaeeeiiooooucn"
         mapa = str.maketrans(com_acentos, sem_acentos)
@@ -56,11 +56,11 @@ class Pessoa:
         return f"[{self.id_pessoa}] {self.nome} - {self.tipo_pessoa} | Nasc: {self.data_nascimento} | Gênero: {self.genero}"
 
 
-if __name__ == "__main__":
+"""if __name__ == "__main__":
     p1 = Pessoa(1, "Ana", "1990-01-01", "Feminino", "usuario")        
     p2 = Pessoa(2, "Beto", "1990-01-01", "Masculino", "U S U A R I O") 
     p3 = Pessoa(3, "Caio", "1990-01-01", "Masculino", "USUÁRIO")
     
     print(p1)
     print(p2)
-    print(p3)
+    print(p3)"""
