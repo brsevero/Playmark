@@ -1,4 +1,4 @@
-class Filme:
+class Filmes:
     def __init__(self, nome, pop):
         self.nome = nome
         self.notas = []   # Lista de avaliações de 1 a 5
@@ -168,67 +168,67 @@ class Arvore_filmes:
 
         print(f"{'='*58}")
 
-def Menu():
-    arv = Arvore_filmes()
+    def Menu(self):
 
-    while True:
-        print("\n===== MENU =====")
-        print("1 - Adicionar filme")
-        print("2 - Ver ranking")
-        print("3 - Remover filme")
-        print("4 - Sair")
+        while True:
+            print("=========================================")
+            print("        AVALIACOES E RANKING")
+            print("=========================================")
+            print("1 - Avaliar um filme (nota de 1 a 5)")
+            print("2 - Mostrar ranking (Top 10)")
+            print("3 - Remover filme")
+            print("0 - Voltar")
+            print("-----------------------------------------")
 
-        try:
-            opcao = int(input("\nEscolha uma opção: "))
-        except ValueError:
-            print("Digite um número válido!")
-            continue
-
-        if opcao == 1:
-            nome = input("Nome do filme: ").strip()
-            if not nome:
-                print("Nome inválido.")
-                continue
             try:
-                pop = int(input("Popularidade (número inteiro): "))
+                opcao = int(input("\nEscolha uma opção: "))
             except ValueError:
-                print("Popularidade inválida.")
+                print("Digite um número válido!")
                 continue
 
-            if arv.adicionar_filme(Filme(nome, pop)):
-
-                nota = float(input("Nota (1 a 5): "))
-                if not (1 <= nota <= 5):
-                    print("Nota inválida! Use um valor entre 1 e 5.")
+            if opcao == 1:
+                nome = input("Nome do filme: ").strip()
+                if not nome:
+                    print("Nome inválido.")
                     continue
-                nota = round(nota, 1)
+                try:
+                    pop = int(input("Popularidade (número inteiro): "))
+                except ValueError:
+                    print("Popularidade inválida.")
+                    continue
+
+                if self.adicionar_filme(Filmes(nome, pop)):
+
+                    nota = float(input("Nota (1 a 5): "))
+                    if not (1 <= nota <= 5):
+                        print("Nota inválida! Use um valor entre 1 e 5.")
+                        continue
+                    nota = round(nota, 1)
+                else:
+                    continue
+                self.avaliar_filme(nome, nota)
+                
+                print(f"   Filme '{nome}' adicionado com sucesso!")
+
+            elif opcao == 2:
+                try:
+                    entrada = input("Quantos filmes no ranking? (Enter = Top 10): ").strip()
+                    limite = int(entrada) if entrada else 10
+                    if limite <= 0:
+                        print("Digite um número positivo.")
+                        continue
+                except ValueError:
+                    limite = 10
+                self.ranking(limite)
+
+            elif opcao == 3:
+                nome = input("Nome do filme a remover: ").strip()
+                self.remover_filme(nome)
+
+            elif opcao == 0:
+                print("Saindo... Até logo!")
+                break
             else:
-                continue
-            arv.avaliar_filme(nome, nota)
-            
-            print(f"   Filme '{nome}' adicionado com sucesso!")
+                print("Opção inválida! Tente novamente.")
 
-        elif opcao == 2:
-            try:
-                entrada = input("Quantos filmes no ranking? (Enter = Top 10): ").strip()
-                limite = int(entrada) if entrada else 10
-                if limite <= 0:
-                    print("Digite um número positivo.")
-                    continue
-            except ValueError:
-                limite = 10
-            arv.ranking(limite)
-
-        elif opcao == 3:
-            nome = input("Nome do filme a remover: ").strip()
-            arv.remover_filme(nome)
-
-        elif opcao == 4:
-            print("Saindo... Até logo!")
-            break
-        else:
-            print("Opção inválida! Tente novamente.")
-
-
-Menu()
 
