@@ -1,10 +1,12 @@
 import os
 from Lista_Encadeada import CatalogoFilmes
 from arvore import Arvore_filmes, Filmes
+from fila import FilaFavoritos
 
 #Variaveis globais
 catalogo = CatalogoFilmes()
 arv_ranking = Arvore_filmes()
+fila = FilaFavoritos()
 
 def limpar_tela():
     os.system("cls" if os.name == "nt" else "clear")
@@ -30,25 +32,19 @@ def listar_filmes():
     catalogo.exibir_catalogo()
 
 
-"""
-# 2. Avaliação por notas (árvore)
-def avaliar_filme():
-    arv_ranking.Menu()
-    print("\n[Avaliar Filme] -> implementar com ARVORE de ranking")
-
-def mostrar_ranking():
-    print("\n[Ranking Top 10] -> implementar com ARVORE de ranking")
-"""
-
 # 3. Lista de favoritos (fila)
 def adicionar_favorito():
-    print("\n[Adicionar Favorito] -> implementar com FILA")
+    print("Insira o nome do filme:")
+    titulo = input()
+    fila.adicionar_favorito(titulo)
 
 def listar_favoritos():
-    print("\n[Listar Favoritos] -> implementar com FILA")
+    fila.listar_favoritos()
 
 def remover_favorito():
-    print("\n[Remover Favorito] -> implementar com FILA")
+    print("Insira o nome do filme:")
+    titulo = input()
+    fila.remover_favorito(titulo)
 
 
 # 4. Categorização por gênero (grafo)
