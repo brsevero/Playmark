@@ -1,7 +1,7 @@
 import sys
 import io
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+#sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 from filme import Filme
 
@@ -10,16 +10,16 @@ class CatalogoFilmes:
     def __init__(self):
         self.cabeca = None  # Início do catálogo
 
-    def adicionar_filme(self, titulo, genero, avaliacao, comentarios):
+    def adicionar_filme(self, titulo, genero):
         """Cria uma instância da entidade Filme e a adiciona ao final da lista."""
         # Criando o objeto/nó com os novos atributos
-        novo_filme = Filme(titulo, genero, avaliacao, comentarios)
+        novo_filme = Filme(titulo, genero)
         
         # Se a lista estiver vazia
         if self.cabeca is None:
             self.cabeca = novo_filme
             print(f"-> '{titulo}' adicionado como o primeiro filme do catálogo.")
-            return
+            return 
         
         # Se já houverem filmes, percorre até o último
         atual = self.cabeca
@@ -31,7 +31,6 @@ class CatalogoFilmes:
         print(f"-> '{titulo}' adicionado ao catálogo.")
 
     def exibir_catalogo(self):
-        """Percorre a lista encadeada e exibe todos os filmes."""
         if self.cabeca is None:
             print("O catálogo está vazio.")
             return
@@ -48,23 +47,3 @@ class CatalogoFilmes:
             atual = atual.proximo
             posicao += 1
 
-# --- Testando a Integração ---
-"""if __name__ == "__main__":
-    meu_sistema = CatalogoFilmes()
-
-    # Adicionando filmes com os novos atributos (Título, Gênero, Avaliação, Comentários)
-    meu_sistema.adicionar_filme(
-        "Interestelar", 
-        "Ficção Científica", 
-        9.5, 
-        "Possui visual e trilha sonora incrível. Só não dou os 10 por algumas falhas no roteiro que são ilógicas e as suas imprecisões científicas, além do ritmo do filme que não me agradou tanto."
-    )
-    
-    meu_sistema.adicionar_filme(
-        "O Auto da Compadecida", 
-        "Comédia/Drama", 
-        10.0, 
-        "Um clássico do cinema brasileiro. Chicó e João Grilo são eternos e não é à toa que esta maravilha é o ganhador do Grande Prêmio do Cinema Brasileiro."
-    )
-
-    meu_sistema.exibir_catalogo()"""

@@ -3,13 +3,12 @@ from comentario import Comentario
 class Filme:
     """Representa a entidade Filme (e também o nó da lista encadeada)."""
     
-    def __init__(self, titulo, genero, avaliacao):
+    def __init__(self, titulo, genero):
         self.titulo = titulo
         self.genero = genero
         
         # Iniciamos com 0 e chamamos o método avaliar para validar a nota inicial
         self.avaliacao = 0
-        self.avaliar(avaliacao)
         
         self.comentarios_head = None
         self.proximo = None  # Ponteiro para o próximo filme na lista
