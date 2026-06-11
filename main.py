@@ -4,21 +4,18 @@ from comentario import Comentario
 
 print("===== INICIANDO SISTEMA PLAY MARK =====\n")
 
-# 1. Instanciando as pessoas usando a classe com tratamento de inputs
 user1 = Pessoa(1, "Lucas Medeiros", "2000-05-12", "Masculino", "Usuário")
 user2 = Pessoa(2, "Beatriz Souza", "1998-11-23", "feminino", "u s u a r i o")
 diretor = Pessoa(3, "Christopher Nolan", "1970-07-30", "Masculino", "Diretor")
 
 
-# 2. Instanciando o filme (CORRIGIDO: Passando Título, Gênero e Nota Inicial)
 filme = Filme("Interestelar", "Ficção Científica", 8.5)
 print("--- Estado Inicial do Filme ---")
 print(filme)
 
 
-# 3. Testando a Nova Função de Avaliação
 print("--- Atualizando a Avaliação do Filme ---")
-filme.avaliar(9.8)  # Modificando a nota através da função
+filme.avaliar(9.8)
 print(filme)
 
 # Teste de segurança da avaliação (Evitando notas absurdas)
@@ -40,8 +37,6 @@ try:
 except ValueError as e:
     print(f"Erro ao criar comentário: {e}")
 
-
-# 5. Exibindo os comentários vinculados ao filme
 filme.exibir_comentarios()
 
 
